@@ -1,8 +1,0 @@
-html {
-    --first-color: rgb(190, 235, 229);
-    background-color: var(--first-color);
-}
-
-.pagesetup {
-    background-color: var(--first-color);
-}
