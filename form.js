@@ -8,22 +8,22 @@
 // - if the length if less than 2, add "is-invalid" class to the input, remove the "is-valid" class
 
 const formValidate = document.querySelector('#form-validate');
-const formValidateFirstName = document.querySelector('#form-validate-task-name');
+const formValidateTaskName = document.querySelector('#form-validate-task-name');
 
 formValidate.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    if (formValidateFirstName.value.length > 0 && formValidateFirstName.value.length <=8) {
-        formValidateFirstName.classList.add('is-valid');
-        formValidateFirstName.classList.remove('is-invalid');
+    if (formValidateTaskName.value.length > 0 && formValidateTaskName.value.length <=8) {
+        formValidateTaskName.classList.add('is-valid');
+        formValidateTasktName.classList.remove('is-invalid');
     } else {
-        formValidateFirstName.classList.add('is-invalid');
-        formValidateFirstName.classList.remove('is-valid');
+        formValidateTaskName.classList.add('is-invalid');
+        formValidateTaskName.classList.remove('is-valid');
     }
 });
 
 
-//const formValidate = document.querySelector('#form-validate');
+//
 const formValidateDescription = document.querySelector('#form-validate-task-description');
 
 formValidate.addEventListener('submit', (event) => {
@@ -42,7 +42,7 @@ formValidate.addEventListener('submit', (event) => {
 
  // console.log ()
 
- //const formValidate = document.querySelector('#form-validate');
+ 
 const formValidateDueDate = document.querySelector('#form-validate-due-date');
 
 formValidate.addEventListener('submit', (event) => {
@@ -50,8 +50,7 @@ formValidate.addEventListener('submit', (event) => {
 
     if (formValidateDueDate.value.length > 0 ) {
         
-        console.log (formValidateDueDate.value);
-        console.log (formValidateDueDate.value.length);
+        
         formValidateDueDate.classList.add('is-valid');
         formValidateDueDate.classList.remove('is-invalid');
     } else {
