@@ -1,11 +1,6 @@
-
 // Validate
 // Use bootstrap validation: https://getbootstrap.com/docs/4.5/components/forms/#server-side
-// When the form with id "form-validate" is submitted,
-// - prevent the default event from firing
-// - check the length of the input with id "form-validate-first-name"
-// - if the length is greater than 2, add "is-valid" class to the input, remove the "is-invalid" class
-// - if the length if less than 2, add "is-invalid" class to the input, remove the "is-valid" class
+
 
 const formValidate = document.querySelector('#form-validate');
 const formValidateTaskName = document.querySelector('#form-validate-task-name');
@@ -13,7 +8,7 @@ const formValidateTaskName = document.querySelector('#form-validate-task-name');
 formValidate.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    if (formValidateTaskName.value.length > 0 && formValidateTaskName.value.length <=8) {
+    if (formValidateTaskName.value.length > 7 && formValidateTaskName.value.length <=80) {
         formValidateTaskName.classList.add('is-valid');
         formValidateTasktName.classList.remove('is-invalid');
     } else {
@@ -22,16 +17,51 @@ formValidate.addEventListener('submit', (event) => {
     }
 });
 
+//
+//
+//
+//VALIDATION FOR DATE PICKER NEEDS TO BE FIXED - SPECIFICALLY LINE 31
+const formValidateDueDate = document.querySelector('input[type="date"]');
+const today = new Date();
+//console.log(today);
+
+formValidate.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    if (formValidateDueDate > today) {
+        formValidateDueDate.classList.add('is-valid');
+        formValidateDueDate.classList.remove('is-invalid');
+    } else {
+        formValidateDueDate.classList.add('is-invalid');
+        formValidateDueDate.classList.remove('is-valid');
+    }
+});
 
 //
+//
+//
+
+const formValidateAssignee = document.querySelector('#form-validate-assignee');
+
+formValidate.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    if (formValidateAssignee.value.length > 7) {
+        formValidateAssignee.classList.add('is-valid');
+        formValidateAssignee.classList.remove('is-invalid');
+    } else {
+        formValidateAssignee.classList.add('is-invalid');
+        formValidateAssignee.classList.remove('is-valid');
+    }
+});
+
+
 const formValidateDescription = document.querySelector('#form-validate-task-description');
 
 formValidate.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    if (formValidateDescription.value.length > 0 && formValidateDescription.value.length <=15) {
-      
-        
+    if (formValidateDescription.value.length > 15) {        
         formValidateDescription.classList.add('is-valid');
         formValidateDescription.classList.remove('is-invalid');
     } else {
@@ -40,21 +70,8 @@ formValidate.addEventListener('submit', (event) => {
     }
 });
 
- // console.log ()
+ 
 
  
-const formValidateDueDate = document.querySelector('#form-validate-due-date');
 
-formValidate.addEventListener('submit', (event) => {
-    event.preventDefault();
 
-    if (formValidateDueDate.value.length > 0 ) {
-        
-        
-        formValidateDueDate.classList.add('is-valid');
-        formValidateDueDate.classList.remove('is-invalid');
-    } else {
-        formValidateDueDate.classList.add('is-invalid');
-        formValidateDueDate.classList.remove('is-valid');
-    }
-});
