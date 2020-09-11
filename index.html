@@ -36,8 +36,8 @@
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" id="form-validate-task-name" placeholder="Example: Fix links">
                                 
-                                <div class="valid-feedback"> Look Good!</div>
-                                <div class="invalid-feedback"> Name needs to be less than 15 characters and not empty</div>   
+                                <div class="valid-feedback"> Great!</div>
+                                <div class="invalid-feedback"> Please include succinct description of the task </div>   
                             </div>
                             <!---->
                             
@@ -47,14 +47,19 @@
                             <div class="col-sm-2">
                                 <input type="date" class="form-control" id="form-validate-due-date">
 
-                                <div class="valid-feedback"> Look Good!</div>
-                                <div class="invalid-feedback"> Date needs to be in present or future and not empty</div> 
+                                <div class="valid-feedback"> OK!</div>
+                                <div class="invalid-feedback"> You must select a date in the future</div> 
                             </div>
                     </div>
             
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="assigned-to">Assigned To</label>
-                            <select class="form-control form control-md col-sm-4">
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="form-validate-assignee" placeholder="Nomimate Team Member">
+                                <div class="valid-feedback">OK!</div>
+                                <div class="invalid-feedback">Who is this assigned to?</div>
+                            </div>
+                            <!--<select class="form-control form control-md col-sm-4">
                                 <option>Team Member 1</option>
                                 <option>Team Member 2</option>
                                 <option>Team Member 3</option>
@@ -64,7 +69,7 @@
                                 <option>Team Member 7</option>
                                 <option>Team Member 8</option>
                                 <option>Team Member 9</option>
-                            </select>    
+                            </select>-->
                         
                         <label class="offset-sm-1 col-sm-2 col-form-label" for="Status">Task Status</label>
                             <div class="dropdown">
@@ -82,8 +87,8 @@
                         <label class="col-sm-2 col-form-label" for="task-description">Description of Task</label>
                         <div class="col-sm-9">
                         <textarea class="form-control" id="form-validate-task-description" rows="7" placeholder="Include any specific instructions or task requirements here"></textarea>
-                        <div class="valid-feedback"> Look Good!</div>
-                        <div class="invalid-feedback"> Description needs to be less than 15 characters long and not empty</div> 
+                        <div class="valid-feedback"> Great!</div>
+                        <div class="invalid-feedback"> Please provide task specific details to enable your assignee to complete it</div> 
                     </div>
                     </div>
 
