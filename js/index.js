@@ -4,26 +4,27 @@
 
 const formValidate = document.querySelector('#form-validate');
 const formValidateTaskName = document.querySelector('#form-validate-task-name');
+const formValidateDueDate = document.querySelector('input[type="date"]');
+const formValidateAssignee = document.querySelector('#form-validate-assignee');
+const formValidateDescription = document.querySelector('#form-validate-task-description');
 
+
+//////////////////////////////////___VALIDATION CODES___////////////////////////////////////
 formValidate.addEventListener('submit', (event) => {
     event.preventDefault();
 
     if (formValidateTaskName.value.length > 7 && formValidateTaskName.value.length <=80) {
         formValidateTaskName.classList.add('is-valid');
-        formValidateTasktName.classList.remove('is-invalid');
+        formValidateTaskName.classList.remove('is-invalid');
     } else {
         formValidateTaskName.classList.add('is-invalid');
         formValidateTaskName.classList.remove('is-valid');
     }
 });
 
-//
-//
-//
-//VALIDATION FOR DATE PICKER NEEDS TO BE FIXED - SPECIFICALLY LINE 31
-const formValidateDueDate = document.querySelector('input[type="date"]');
+
+//VALIDATION FOR DATE PICKER NEEDS TO BE FIXED 
 const today = new Date();
-//console.log(today);
 
 formValidate.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -37,11 +38,6 @@ formValidate.addEventListener('submit', (event) => {
     }
 });
 
-//
-//
-//
-
-const formValidateAssignee = document.querySelector('#form-validate-assignee');
 
 formValidate.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -56,8 +52,6 @@ formValidate.addEventListener('submit', (event) => {
 });
 
 
-const formValidateDescription = document.querySelector('#form-validate-task-description');
-
 formValidate.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -70,4 +64,11 @@ formValidate.addEventListener('submit', (event) => {
     }
 });
 
- 
+/////////////////////////////VALIDATION CODES END/////////////////////////
+
+
+const task1 = new TaskManager();
+const task2 = new TaskManager();
+task1.addTask('Fix validation code for due date', 'Due date validation code is currently incomplete, refer to Nicks hint on slack \(pod2-code-busters channel\)', 'Diana', '11/09/2020');
+task2.addTask('Add validation feature to \"Task Status\"', 'The element \'task status\' needs a validation feature as per Rubric', 'Irina', '18/09/2020');
+

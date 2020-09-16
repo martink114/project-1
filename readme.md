@@ -9,3 +9,8 @@ Changes to Javascript:
 Verification activities completed: 
     - validation features for Task Name, Assigned to, Description of Task - OK
     - validation feature for due date: defaulted to 'invalid' - NEED TO FIX CODE TO MAKE IT FUNCTIONAL IN RESPONSE TO THE CORRECT SELECTION BEING MADE (IE. DATE IN THE FUTURE IS SELECTED).
+
+
+16 September 2020
+- Irina has combined the TASK LIST with the NEW TASK FORM so that they are now on the same page (as per Nicks instructions - Task 6, Step 4)
+- DS has changed the name of our combined TASK LIST and NEW TASK FORM to index.html (the original new task form now SUPERCEDED as 'taskform.html' and added to our .gitignore file)

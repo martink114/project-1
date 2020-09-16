@@ -1,79 +1,34 @@
-pulled from FORM.JS (Wednesday 16 September 2020)
-
-//sprint 2 task 5 - 
-/*Define a the object structure to represent a task using JavaScript with the following fields:
-ID -> Number
-Name -> String
-Description -> String
-AssignedTo (person responsible for completing the task) -> String
-DueDate -> Date when the task is due
-Status (TODO, IN PROGRESS, REVIEW and DONE) -> String
-*/
-
-//Define a tasks object to hold the tasks (this in ARRAY format)
-const tasks = [
-    {taskId: "001", taskName: "Fix validation code for due date", taskDescription: "Due date validation code is currently incomplete, refer to Nicks hint on slack (pod2-code-busters channel)", "assignee": "Diana", "dueDate": "11/09/2020", "status": "To do"},
-    {"taskId": "002", "taskName": "Add validation feature to 'Task Status", "taskDescription": "The element 'task status' needs a validation feature as per Rubric", "assignee": "Someone", "dueDate": "18/09/2020", "status": "In Progress"},
-    {"taskId": "003", "taskName": "Create Task Manager object", "taskDescription": "Refer to Task 5 Practice in Canvas; define a tasks array or object to hold the tasks; and a task manager object with the fuctions as indicated on the page", "assignee": "Another one", "dueDate": "01/10/2020", "status": "Review"}
-]; 
-//console.log(tasks); 
-//console.log(tasks[2]);
-
-//Define a TaskManager Object 
-const taskManager = {};
-
-//Define the following functions: 
-//[1] Get Tasks - returns the list of ALL tasks: function getAllTasks();
-taskManager.getAllTasks = () => {
-return tasks;
-}
-
-
-//[2] Get all Tasks with a given status - returns a list of all tasks where a status equal to the status passes as an argument: function getTasksWithStatus(status); 
-
-for (let i=0; i<tasks.length; i++) {
-    if(
-    }
-
-
-//[3] Add Task - a task to existing tasks lists: function addTask(task);
-//[4] Delete Task - deletes a task from the Tasks list: function updateTask(taskId, status); 
-//[5] Update task status - update the task status: function updateTask(taskId, status); 
-//[6] Assign a task to - updates the value of the assigned task to the field of a given task: function assignTask(taskId, assignee)
+# 16 September 2020 (DS) - this is the original new task form (when it was on its own html page
+.taskform.html 
 
 
 
 
+#/* task examples stored as OBJECTS (as opposed to ARRAYS)
+#const tasks = {
+#        "taskId1": {
+#            "taskName": "Fix validation code for due date", 
+#            "taskDescription": "Due date validation code is currently incomplete, refer to Nicks hint on slack (pod2-code-busters channel)", 
+#            "assignee": "Diana", 
+#            "dueDate": "11/09/2020", 
+#            "status": "To Do"
+#        },
+#        "taskId2": {
+#            "taskName": "Add validation feature to 'Task Status", 
+#            "taskDescription": "The element 'task status' needs a validation feature as per Rubric", 
+#            "assignee": "Someone", 
+#            "dueDate": "18/09/2020", 
+#            "status": "In Progress"
+#        },
+#        "taskId3": {
+#            "taskName": "Create Task Manager object", 
+#           "taskDescription": "Refer to Task 5 Practice in Canvas; define a tasks array or object to hold the tasks; and a task manager #bject with the fuctions as indicated on the page", 
+#           "assignee": "Another One", 
+#            "dueDate": "01/10/2020", 
+#            "status": "Review"
+#        }
+#};
 
+#console.log(tasks.taskId1.status, tasks.taskId2.status);
 
-
-
-/* task examples stored as OBJECTS (as opposed to ARRAYS)
-const tasks = {
-        "taskId1": {
-            "taskName": "Fix validation code for due date", 
-            "taskDescription": "Due date validation code is currently incomplete, refer to Nicks hint on slack (pod2-code-busters channel)", 
-            "assignee": "Diana", 
-            "dueDate": "11/09/2020", 
-            "status": "To Do"
-        },
-        "taskId2": {
-            "taskName": "Add validation feature to 'Task Status", 
-            "taskDescription": "The element 'task status' needs a validation feature as per Rubric", 
-            "assignee": "Someone", 
-            "dueDate": "18/09/2020", 
-            "status": "In Progress"
-        },
-        "taskId3": {
-            "taskName": "Create Task Manager object", 
-            "taskDescription": "Refer to Task 5 Practice in Canvas; define a tasks array or object to hold the tasks; and a task manager object with the fuctions as indicated on the page", 
-            "assignee": "Another One", 
-            "dueDate": "01/10/2020", 
-            "status": "Review"
-        }
-};
-
-console.log(tasks.taskId1.status, tasks.taskId2.status);
-
-*/
-
+#*/

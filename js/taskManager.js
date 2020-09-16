@@ -1,19 +1,22 @@
+//create taskManager class
 class TaskManager {
-    constructor(taskName, dueDate, assignee, taskDescription, status) {
-        this.taskName = taskName;
-        this.dueDate = dueDate;
-        this.assignee = assignee; 
-        this.taskDescription = taskDescription;
-        this.status = status;
+    constructor(currentId = 0) {
+        this.tasks = [];
+        this.currentId = currentId;
     }
 
-taskList() {
-    console.log('Task Name = ' + this.taskName + '; (due ' + this.dueDate + '); has been assigned to ' + this.assignee + '. Full description of the task is as follows: ' + this.taskDescription + 'and it\'s current status = ' + this.status + '.');
-};
-
-};
-
-let task1 = new TaskManager('taskName1', 'dueDate1', 'assignee1', 'taskDescription1', 'status1');
+addTask (taskName, taskDescription, assignedTo, dueDate) {
+    const task = {
+        taskId: this.currentId++, 
+        taskName: taskName, 
+        taskDescription: taskDescription,
+        assignedTo: assignedTo, 
+        dueDate: dueDate, 
+        status: 'To Do'
+    };
+    this.tasks.push(task);
+}
+}
 
 
 

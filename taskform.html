@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <!--Required meta tags-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" style="text/css" href="index.css">
+
+        <!--Boostrap CSS-->
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    </head>
+
+
+    <body class="pagesetup">
+        <style>
+            body{
+                font-family: 'Bebas Neue', cursive;  
+            }
+            .jumbotron{
+                background-color: plum;
+            }
+        </style>
+
+            <div class="container">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4">Create New Task</h1>
+                    </div>
+                </div>
+                <!---->
+                <form id="form-validate" novalidation>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="task-name">Task Name</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="form-validate-task-name" placeholder="Example: Fix links">
+                                
+                                <div class="valid-feedback"> Great!</div>
+                                <div class="invalid-feedback"> Please include succinct description of the task </div>   
+                            </div>
+                            <!---->
+                            
+                            
+
+                        <label class="offset-sm-1 col-sm-2 col-form-label" for="due-date">Due Date</label>
+                            <div class="col-sm-2">
+                                <input type="date" class="form-control" id="form-validate-due-date">
+
+                                <div class="valid-feedback"> OK!</div>
+                                <div class="invalid-feedback"> You must select a date in the future</div> 
+                            </div>
+                    </div>
+            
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="assigned-to">Assigned To</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="form-validate-assignee" placeholder="Nomimate Team Member">
+                                <div class="valid-feedback">OK!</div>
+                                <div class="invalid-feedback">Who is this assigned to?</div>
+                            </div>
+                            <!--<select class="form-control form control-md col-sm-4">
+                                <option>Team Member 1</option>
+                                <option>Team Member 2</option>
+                                <option>Team Member 3</option>
+                                <option>Team Member 4</option>
+                                <option>Team Member 5</option>
+                                <option>Team Member 6</option>
+                                <option>Team Member 7</option>
+                                <option>Team Member 8</option>
+                                <option>Team Member 9</option>
+                            </select>-->
+                        
+                        <label class="offset-sm-1 col-sm-2 col-form-label" for="Status">Task Status</label>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="task-status" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Please Select</button>
+                                <div class="dropdown-menu" aria-labelledby="task-status">
+                                    <button class="dropdown-item" type="button">New (to-do)</button>
+                                    <button class="dropdown-item" type="button">In Progress</button>
+                                    <button class="dropdown-item" type="button">Review</button>
+                                    <button class="dropdown-item" type="button">Done</button>
+                                </div>
+                            </div>
+                    </div>
+            
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="task-description">Description of Task</label>
+                        <div class="col-sm-9">
+                        <textarea class="form-control" id="form-validate-task-description" rows="7" placeholder="Include any specific instructions or task requirements here"></textarea>
+                        <div class="valid-feedback"> Great!</div>
+                        <div class="invalid-feedback"> Please provide task specific details to enable your assignee to complete it</div> 
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Upload File</label>
+                        <br>
+                        <input type="file">
+                        <p class="help-block">Only png and jpg allowed</p>
+                    </div>
+            
+                    <div class="checkbox">
+                        <label>
+                        <input type="checkbox"> Check me 
+                        </label>
+                    </div>
+            
+
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                </form>
+            </div>
+
+
+        <!-- Optional JavaScript -->
+        <script src="js/taskManager.js"></script>
+        <script src="js/index.js"></script>
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+</html>
