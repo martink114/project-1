@@ -71,7 +71,3 @@ formValidate.addEventListener('submit', (event) => {
 });
 
  
-
- 
-
-
