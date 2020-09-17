@@ -2,69 +2,69 @@
 // Use bootstrap validation: https://getbootstrap.com/docs/4.5/components/forms/#server-side
 
 
-const formValidate = document.querySelector('#form-validate');
-const formValidateTaskName = document.querySelector('#form-validate-task-name');
-const formValidateDueDate = document.querySelector('input[type="date"]');
-const formValidateAssignee = document.querySelector('#form-validate-assignee');
-const formValidateDescription = document.querySelector('#form-validate-task-description');
+const newTaskForm = document.querySelector('#newTaskForm');
+const newTaskNameInput = document.querySelector('#newTaskNameInput');
+const newTaskDueDate = document.querySelector('#newTaskDueDate');
+const newTaskAssignedTo = document.querySelector('#newTaskAssignedTo');
+const newTaskDescription = document.querySelector('#newTaskDescription');
 
 
-//////////////////////////////////___VALIDATION CODES___////////////////////////////////////
-formValidate.addEventListener('submit', (event) => {
+//////////////////___VALIDATION CODES___/////////////////////
+newTaskForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    if (formValidateTaskName.value.length > 7 && formValidateTaskName.value.length <=80) {
-        formValidateTaskName.classList.add('is-valid');
-        formValidateTaskName.classList.remove('is-invalid');
+    if (newTaskNameInput.value.length > 5 && newTaskNameInput.value.length <=80) {
+        newTaskNameInput.classList.add('is-valid');
+        newTaskNameInput.classList.remove('is-invalid');
     } else {
-        formValidateTaskName.classList.add('is-invalid');
-        formValidateTaskName.classList.remove('is-valid');
+        newTaskNameInput.classList.add('is-invalid');
+        newTaskNameInput.classList.remove('is-valid');
     }
 });
 
 
-//VALIDATION FOR DATE PICKER NEEDS TO BE FIXED 
 const today = new Date();
+today.setUTCHours(0,0,0,0);
 
-formValidate.addEventListener('submit', (event) => {
+newTaskForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    if (formValidateDueDate > today) {
-        formValidateDueDate.classList.add('is-valid');
-        formValidateDueDate.classList.remove('is-invalid');
+    if (newTaskDueDate.valueAsNumber < today.getTime() || newTaskDueDate.value == 0) {
+        newTaskDueDate.classList.remove('is-valid');
+        newTaskDueDate.classList.add('is-invalid');
+
     } else {
-        formValidateDueDate.classList.add('is-invalid');
-        formValidateDueDate.classList.remove('is-valid');
+        newTaskDueDate.classList.add('is-valid');
+        newTaskDueDate.classList.remove('is-invalid');
     }
 });
 
 
-formValidate.addEventListener('submit', (event) => {
+newTaskForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    if (formValidateAssignee.value.length > 7) {
-        formValidateAssignee.classList.add('is-valid');
-        formValidateAssignee.classList.remove('is-invalid');
+    if (newTaskAssignedTo.value.length > 2) {
+        newTaskAssignedTo.classList.add('is-valid');
+        newTaskAssignedTo.classList.remove('is-invalid');
     } else {
-        formValidateAssignee.classList.add('is-invalid');
-        formValidateAssignee.classList.remove('is-valid');
+        newTaskAssignedTo.classList.add('is-invalid');
+        newTaskAssignedTo.classList.remove('is-valid');
     }
 });
 
 
-formValidate.addEventListener('submit', (event) => {
+newTaskForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    if (formValidateDescription.value.length > 15) {        
-        formValidateDescription.classList.add('is-valid');
-        formValidateDescription.classList.remove('is-invalid');
+    if (newTaskDescription.value.length > 10) {        
+        newTaskDescription.classList.add('is-valid');
+        newTaskDescription.classList.remove('is-invalid');
     } else {
-        formValidateDescription.classList.add('is-invalid');
-        formValidateDescription.classList.remove('is-valid');
+        newTaskDescription.classList.add('is-invalid');
+        newTaskDescription.classList.remove('is-valid');
     }
 });
-
-/////////////////////////////VALIDATION CODES END/////////////////////////
+//////////////////VALIDATION CODES END///////////////////////
 
 
 const task1 = new TaskManager();
