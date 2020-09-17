@@ -1,17 +1,24 @@
-// Validate
-// Use bootstrap validation: https://getbootstrap.com/docs/4.5/components/forms/#server-side
+// Initialize a new TaskManager with currentId set to 0
+const newTasks = new TaskManager(0);
 
-
+// Select the New Task Form
 const newTaskForm = document.querySelector('#newTaskForm');
+
+
+
+
+// Select the inputs
 const newTaskNameInput = document.querySelector('#newTaskNameInput');
 const newTaskDueDate = document.querySelector('#newTaskDueDate');
 const newTaskAssignedTo = document.querySelector('#newTaskAssignedTo');
 const newTaskDescription = document.querySelector('#newTaskDescription');
 
 
+
 //////////////////___VALIDATION CODES___/////////////////////
+// Add an 'onsubmit' event listener
 newTaskForm.addEventListener('submit', (event) => {
-    event.preventDefault();
+    event.preventDefault();  // Prevent default action
 
     if (newTaskNameInput.value.length > 5 && newTaskNameInput.value.length <=80) {
         newTaskNameInput.classList.add('is-valid');
@@ -64,11 +71,34 @@ newTaskForm.addEventListener('submit', (event) => {
         newTaskDescription.classList.remove('is-valid');
     }
 });
+
 //////////////////VALIDATION CODES END///////////////////////
+newTaskForm.addEventListener('submit', (event) => {
+    event.preventDefault(); 
+
+// Get the values of the inputs
+const taskName = newTaskNameInput.value;
+const taskDescription = newTaskDescription.value;
+const assignedTo = newTaskAssignedTo.value;
+const dueDate = newTaskDueDate.value;
+
+// Add the task to the task manager
+newTasks.addTask(taskName, taskDescription, assignedTo, dueDate);
+
+// Clear the form
+newTaskNameInput.value = '';
+newTaskDescription.value = '';
+newTaskAssignedTo.value = '';
+newTaskDueDate.value = '';
+
+console.log(newTasks);
+});
 
 
-const task1 = new TaskManager();
-const task2 = new TaskManager();
-task1.addTask('Fix validation code for due date', 'Due date validation code is currently incomplete, refer to Nicks hint on slack \(pod2-code-busters channel\)', 'Diana', '11/09/2020');
-task2.addTask('Add validation feature to \"Task Status\"', 'The element \'task status\' needs a validation feature as per Rubric', 'Irina', '18/09/2020');
+/*const newTask = new TaskManager();
 
+newTask.addTask('Fix validation code for due date', 'Due date validation code is currently incomplete, refer to Nicks hint on slack \(pod2-code-busters channel\)', 'Diana', '11/09/2020');
+
+newTask.addTask('Add validation feature to \"Task Status\"', 'The element \'task status\' needs a validation feature as per Rubric', 'Irina', '18/09/2020');
+
+newTasks.addTask('fix status button on New Task Form', 'Status button does not work', 'Diana', '30/09/2020');*/
