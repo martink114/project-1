@@ -81,5 +81,4 @@ newTask.addTask('Add validation feature to \"Task Status\"', 'The element \'task
 
 newTasks.addTask('fix status button on New Task Form', 'Status button does not work', 'Diana', '30/09/2020');*/
 
-// Render the tasks
 

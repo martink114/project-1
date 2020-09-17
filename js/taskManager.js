@@ -47,7 +47,7 @@ class TaskManager {
             const date = new Date(task.dueDate);
             const formattedDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
             //Create task html
-            const taskHtml = createTaskHtml(task.name, task.description, task.assignedTo, formattedDate, task.status);
+            const taskHtml = createTaskHtml(task.taskName, task.taskDescription, task.assignedTo, formattedDate, task.status);
             //Push the taskHtml into the tasksHtmlList array
             taskHtmlList.push(taskHtml);
         }
