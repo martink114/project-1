@@ -119,11 +119,11 @@
                   </div>
               </div>
               <!---->
-              <form id="form-validate" novalidation>
+              <form id="newTaskForm" novalidation>
                   <div class="form-group row">
-                      <label class="col-sm-2 col-form-label" for="task-name">Task Name</label>
+                      <label class="col-sm-2 col-form-label" for="newTaskNameInput">Task Name</label>
                           <div class="col-sm-4">
-                              <input type="text" class="form-control" id="form-validate-task-name" placeholder="Example: Fix links">
+                              <input type="text" class="form-control" id="newTaskNameInput" placeholder="Example: Fix links">
                               
                               <div class="valid-feedback"> Great!</div>
                               <div class="invalid-feedback"> Please include succinct description of the task </div>   
@@ -131,20 +131,18 @@
                           <!---->
                           
                           
-
-                      <label class="offset-sm-1 col-sm-2 col-form-label" for="due-date">Due Date</label>
-                          <div class="col-sm-2">
-                              <input type="date" class="form-control" id="form-validate-due-date">
-
-                              <div class="valid-feedback"> OK!</div>
-                              <div class="invalid-feedback"> You must select a date in the future</div> 
+                      <label class="offset-sm-1 col-sm-2 col-form-label" for="newTaskDueDate">Due Date</label>
+                          <div class="col-sm-3">
+                              <input type="date" class="form-control" id="newTaskDueDate">
+                              <div class="valid-feedback">OK!</div>
+                              <div class="invalid-feedback">Date must be in the future</div>
                           </div>
                   </div>
-          
+  
                   <div class="form-group row">
-                      <label class="col-sm-2 col-form-label" for="assigned-to">Assigned To</label>
+                      <label class="col-sm-2 col-form-label" for="newTaskAssignedTo">Assigned To</label>
                           <div class="col-sm-4">
-                              <input type="text" class="form-control" id="form-validate-assignee" placeholder="Nomimate Team Member">
+                              <input type="text" class="form-control" id="newTaskAssignedTo" placeholder="Nomimate Team Member">
                               <div class="valid-feedback">OK!</div>
                               <div class="invalid-feedback">Who is this assigned to?</div>
                           </div>
@@ -162,7 +160,7 @@
                       
                       <label class="offset-sm-1 col-sm-2 col-form-label" for="Status">Task Status</label>
                           <div class="dropdown">
-                              <button class="btn btn-secondary dropdown-toggle" type="button" id="task-status" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Please Select</button>
+                              <button class="btn btn-secondary dropdown-toggle" type="button" id="newTaskStatus" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Please Select</button>
                               <div class="dropdown-menu" aria-labelledby="task-status">
                                   <button class="dropdown-item" type="button">New (to-do)</button>
                                   <button class="dropdown-item" type="button">In Progress</button>
@@ -173,9 +171,9 @@
                   </div>
           
                   <div class="form-group row">
-                      <label class="col-sm-2 col-form-label" for="task-description">Description of Task</label>
-                      <div class="col-sm-9">
-                      <textarea class="form-control" id="form-validate-task-description" rows="7" placeholder="Include any specific instructions or task requirements here"></textarea>
+                      <label class="col-sm-2 col-form-label" for="newTaskDescription">Description of Task</label>
+                      <div class="col-sm-10">
+                      <textarea class="form-control" id="newTaskDescription" rows="7" placeholder="Include any specific instructions or task requirements here"></textarea>
                       <div class="valid-feedback"> Great!</div>
                       <div class="invalid-feedback"> Please provide task specific details to enable your assignee to complete it</div> 
                   </div>
