@@ -22,7 +22,7 @@ newTaskForm.addEventListener('submit', (event) => {
         newTaskNameInput.classList.remove('is-valid');
     }
 
-    const today = new Date();
+    const today = new Date();localStorage
     today.setUTCHours(0,0,0,0);
 
     if (newTaskDueDate.valueAsNumber < today.getTime() || newTaskDueDate.value == 0) {
@@ -81,4 +81,22 @@ newTask.addTask('Add validation feature to \"Task Status\"', 'The element \'task
 
 newTasks.addTask('fix status button on New Task Form', 'Status button does not work', 'Diana', '30/09/2020');*/
 
+//8.2 Select the Task List and store it in a variable
+const tasksList = document.querySelector('#tasksList');
 
+//8.3 Add an Event Listener to the Task List, listening for the 'click' event.
+tasksList.addEventListener('click', (event) =>{
+    if (event.target.classList.contains('done-button')) {
+
+        const parentTask = event.target.parentElement.parentElement;
+        
+        const taskId = Number(parentTask.dataset.taskId);
+        
+        const task = taskManager.getTaskById(taskId);
+       
+        task.status = 'DONE';
+
+        taskManager.render();
+        
+    }
+});
