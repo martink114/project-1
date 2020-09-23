@@ -1,7 +1,6 @@
-
 //7.1: Create new function createTaskHtml
-const createTaskHtml = (id, taskName, taskDescription, assignedTo, dueDate, status) => `
-    <li class="list-group-item" data-task-id=${id}>
+const createTaskHtml = (taskId, taskName, taskDescription, assignedTo, dueDate, status) => `
+    <li class="list-group-item" data-task-id=${taskId}>
         <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
             <h5>${taskName}</h5>
             <span class="badge ${status === 'TO DO' ? 'badge-danger' : 'badge-success'}">${status}</span>
@@ -12,7 +11,10 @@ const createTaskHtml = (id, taskName, taskDescription, assignedTo, dueDate, stat
         </div>
         <p>${taskDescription}</p>
         <div class="d-flex w-100 justify-content-end">
-        <button class="btn btn-outline-success done-button ${status === 'TO DO' ? 'visible' : 'invisible'}">Mark As Done</button>
+            <button class="btn btn-outline-warning btn-sm acknowledge-button ${status === 'TO DO' ? 'd-block' : 'd-none'}">Acknowledge</button>
+            <button class="btn btn-outline-success done-button ${status === 'In Progress' ? 'd-block' : 'd-none'}">Mark As Done</button>
+            <button class="btn btn-outline-secondary btn-sm delete-button ${status === 'DONE' ? 'd-block' : 'd-none'}">Remove from List</button>
+        </div>
     </li>
 `;
 
@@ -26,7 +28,7 @@ class TaskManager {
 
     addTask (taskName, taskDescription, assignedTo, dueDate) {
         const task = {
-            id: this.currentId++, 
+            taskId: this.currentId++, 
             taskName: taskName, 
             taskDescription: taskDescription,
             assignedTo: assignedTo, 
@@ -35,6 +37,21 @@ class TaskManager {
         };
         this.tasks.push(task);
     }
+    
+    //Task 10 Step 2: deleting tasks
+
+    deleteTask(taskId) {
+        const newTasks = []; 
+        for (let i = 0; i < this.tasks.length; i++) {
+            const task = this.tasks[i]; 
+            if (task.taskId !== taskId) {
+                newTasks.push(task); 
+            }
+
+        }
+        this.tasks = newTasks; 
+    }
+
     //8.4: Add a new method, getTaskById(), it should accept a taskId as a parameter.
     getTaskById(taskId) {
         let foundTask;
@@ -43,7 +60,7 @@ class TaskManager {
         for (let i = 0; i < this.tasks.length; i++) {
             const task = this.tasks[i];
 
-            if (task.id === taskId) {
+            if (task.taskId === taskId) {
                 foundTask = task;
             }
         }
@@ -66,16 +83,39 @@ class TaskManager {
 
             const formattedDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
             //Create task html
-            const taskHtml = createTaskHtml(task.id, task.taskName, task.taskDescription, task.assignedTo, formattedDate, task.status);
+            const taskHtml = createTaskHtml(task.taskId, task.taskName, task.taskDescription, task.assignedTo, formattedDate, task.status);
             //Push the taskHtml into the tasksHtmlList array
             taskHtmlList.push(taskHtml);
         }
-        //Cteate tasksHtml 
+        //Create tasksHtml 
         const tasksHtml = taskHtmlList.join('\n');
             
         //Select the tasks list element and set its innerHTML to the tasksHtml
         const tasksList = document.querySelector('#tasksList');
         tasksList.innerHTML = tasksHtml;
     }
-}
 
+
+
+//Task 9 - Save and Load from localStorage
+
+    save() {
+        const tasksJson = JSON.stringify(this.tasks);
+        localStorage.setItem('tasks', tasksJson);
+        
+        const currentId = String(this.currentId);
+        localStorage.setItem('currentId', currentId);
+    }
+
+    load() {
+        if (localStorage.getItem('tasks')) {
+            const tasksJson = localStorage.getItem('tasks'); 
+            this.tasks = JSON.parse(tasksJson); 
+        }
+
+        if (localStorage.getItem('currentId')) {
+            const currentId = localStorage.getItem('currentId'); 
+            this.currentId = Number(currentId);
+        }
+    }
+}
