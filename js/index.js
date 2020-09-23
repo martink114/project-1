@@ -1,6 +1,10 @@
 // Initialize a new TaskManager with currentId set to 0
 const taskManager = new TaskManager(0);
 
+taskManager.load(); 
+
+taskManager.render(); 
+
 // Select the New Task Form
 const newTaskForm = document.querySelector('#newTaskForm');
 
@@ -60,6 +64,7 @@ newTaskForm.addEventListener('submit', (event) => {
 
     // Add the task to the task manager
     taskManager.addTask(taskName, taskDescription, assignedTo, dueDate);
+    taskManager.save(); 
 
     // Render the tasks
     taskManager.render();
@@ -73,30 +78,65 @@ newTaskForm.addEventListener('submit', (event) => {
 });
 
 
-/*const newTask = new TaskManager();
+
+
+//8.2 Select the Task List and store it in a variable
+const tasksList = document.querySelector('#tasksList');
+
+
+
+//8.3 Add an Event Listener to the Task List, listening for the 'click' event.
+tasksList.addEventListener('click', (event) => {
+
+    if (event.target.classList.contains('acknowledge-button')) {
+        const parentTask = event.target.parentElement.parentElement;
+        const taskId = Number(parentTask.dataset.taskId);
+        const task = taskManager.getTaskById(taskId);
+        task.status = 'In Progress';
+
+        taskManager.save(); 
+        taskManager.render();
+    }
+
+    if (event.target.classList.contains('done-button')) {
+        const parentTask = event.target.parentElement.parentElement;
+        const taskId = Number(parentTask.dataset.taskId);
+        const task = taskManager.getTaskById(taskId);
+        task.status = 'DONE';
+
+        taskManager.save(); 
+        taskManager.render();
+    }
+
+    if (event.target.classList.contains('delete-button')) {
+        const parentTask = event.target.parentElement.parentElement;
+        const taskId = Number(parentTask.dataset.taskId); 
+        taskManager.deleteTask(taskId); 
+
+        taskManager.save(); 
+        taskManager.render();
+    }
+});
+
+
+
+
+
+
+
+
+
+/*
 
 newTask.addTask('Fix validation code for due date', 'Due date validation code is currently incomplete, refer to Nicks hint on slack \(pod2-code-busters channel\)', 'Diana', '11/09/2020');
 
 newTask.addTask('Add validation feature to \"Task Status\"', 'The element \'task status\' needs a validation feature as per Rubric', 'Irina', '18/09/2020');
 
-newTasks.addTask('fix status button on New Task Form', 'Status button does not work', 'Diana', '30/09/2020');*/
+newTasks.addTask('fix status button on New Task Form', 'Status button does not work', 'Diana', '30/09/2020');
 
-//8.2 Select the Task List and store it in a variable
-const tasksList = document.querySelector('#tasksList');
+Ask Generation if they have a similar course for Rocket Science instead and if I could credit transfer from this course to that. 
 
-//8.3 Add an Event Listener to the Task List, listening for the 'click' event.
-tasksList.addEventListener('click', (event) =>{
-    if (event.target.classList.contains('done-button')) {
+grass growing quick in warmer weather and the stuff on your head is out of control. 
+Consider weeding too.
 
-        const parentTask = event.target.parentElement.parentElement;
-        
-        const taskId = Number(parentTask.dataset.taskId);
-        
-        const task = taskManager.getTaskById(taskId);
-       
-        task.status = 'DONE';
-
-        taskManager.render();
-        
-    }
-});
+*/
