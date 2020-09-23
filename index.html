@@ -46,8 +46,9 @@
                 <a href="#" class="btn btn-primary">TM8</a>
                 <a href="#" class="btn btn-primary">TM9</a>
                 <a href="#" class="btn btn-primary">Team</a>
-                <a href="#newTask" class="btn btn-primary">Assign New Task</a>
-                <a href="#" class="btn btn-primary">Modify Task</a>
+                <a href="#newTask" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Assign New Task</a>
+                
+                <!-- <a href="#" class="btn btn-primary">Modify Task</a> -->
               </div>
             </div>
           </div>
@@ -112,26 +113,25 @@
     <body class="pagesetup">
       
 
-          <div class="container">
+          <!-- <div class="container">
               <div class="jumbotron jumbotron-fluid">
                   <div class="container">
                       <h1 class="display-4" id="newTask">Create New Task</h1>
                   </div>
               </div>
-              <!---->
+              
               <form id="newTaskForm" novalidation>
                   <div class="form-group row">
                       <label class="col-sm-2 col-form-label" for="newTaskNameInput">Task Name</label>
                           <div class="col-sm-4">
                               <input type="text" class="form-control" id="newTaskNameInput" placeholder="Example: Fix links">
-                              
                               <div class="valid-feedback"> Great!</div>
                               <div class="invalid-feedback"> Please include succinct description of the task </div>   
-                          </div>
+                          </div> -->
                           <!---->
                           
                           
-                      <label class="offset-sm-1 col-sm-2 col-form-label" for="newTaskDueDate">Due Date</label>
+                      <!-- <label class="offset-sm-1 col-sm-2 col-form-label" for="newTaskDueDate">Due Date</label>
                           <div class="col-sm-3">
                               <input type="date" class="form-control" id="newTaskDueDate">
                               <div class="valid-feedback">OK!</div>
@@ -158,7 +158,7 @@
                               <option>Team Member 9</option>
                           </select>-->
                       
-                      <label class="offset-sm-1 col-sm-2 col-form-label" for="Status">Status</label>
+                      <!-- <label class="offset-sm-1 col-sm-2 col-form-label" for="Status">Status</label>
                           <div class="dropdown">
                               <button class="btn btn-secondary dropdown-toggle" type="button" id="newTaskStatus" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Please choose</button>
                               <div class="dropdown-menu" aria-labelledby="task-status">
@@ -197,10 +197,79 @@
                       <div class="col-sm-2">
                           <button type="submit" class="btn btn-primary">Submit</button>
                       </div>
-              </form>
+              </form> -->
+         <!-- </div>  -->
+        
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id = "newTask">Create New Task</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <div class="modal-body">
+                  <form id="newTaskForm" novalidation>
+                    <div class="form-group">
+                      <label for="newTaskNameInput" class="col-form-label">Task Name</label>
+                      <input type="text" class="form-control" id="newTaskNameInput" placeholder="Example: Fix links">
+                        <div class="valid-feedback"> Great!</div>
+                        <div class="invalid-feedback"> Please include succinct description of the task </div> 
+                    </div>
+
+                    <div class="form-group">
+                      <label for="newTaskAssignedTo" class="col-form-label">Assigned To:</label>
+                      <input type="text" class="form-control" id="newTaskAssignedTo" placeholder="Nominate Team Member">
+                        <div class="valid-feedback">OK!</div>
+                        <div class="invalid-feedback">Who is this assigned to?</div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="newTaskDueDate" class="col-form-label">Due Date</label>
+                      <input type="date" class="form-control" id="newTaskDueDate">
+                        <div class="valid-feedback">OK!</div>
+                        <div class="invalid-feedback">Date must be in the future</div>                            
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="newTaskDescription" class="col-form-label">Description</label>                
+                      <textarea class="form-control" id="newTaskDescription" placeholder="Include any specific instructions or task requirements here"></textarea>
+                        <div class="valid-feedback"> Great!</div>
+                        <div class="invalid-feedback"> Please provide task specific details to enable your assignee to complete it</div> 
+                    </div>
+
+                    <div class="form-group">
+                      <label for="newTaskStatus" class="col-form-label">Status</label>
+                      <select class="form-control" id="newTaskStatus">
+                        <option selected="selected">Please choose</option>
+                        <option>To Do</option>
+                        <option>In Progress</option>
+                        <option>Review</option>
+                        <option>Done</option>
+                      </select>      
+                    </div>
+
+                    <div class="form-group">
+                      <label>Upload File</label>
+                      <br>
+                      <input type="file">
+                      <p class="help-block">Only png and jpg allowed</p>
+                    </div>
+                  </form>
+                </div>
+                    
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </div>
           </div>
 
-
+         
       <!-- Optional JavaScript -->
       <script src="js/taskManager.js"></script>
       <script src="js/index.js"></script>
