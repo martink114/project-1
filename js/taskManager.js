@@ -1,19 +1,21 @@
 //7.1: Create new function createTaskHtml
 const createTaskHtml = (taskId, taskName, taskDescription, assignedTo, dueDate, status) => `
-    <li class="list-group-item" data-task-id=${taskId}>
+<li class="list-group-item" data-task-id=${taskId}>
         <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
-            <h5>${taskName}</h5>
-            <span class="badge ${status === 'TO DO' ? 'badge-danger' : 'badge-success'}">${status}</span>
+            <h4>${taskName}</h4>
+            <span class="badge badge-danger ${status === 'TO DO' ? 'd-block' : 'd-none'}">${status}</span>
+            <span class="badge badge-warning ${status === 'In Progress' ? 'd-block' : 'd-none'}">${status}</span>
+            <span class="badge badge-success ${status === 'DONE' ? 'd-block' : 'd-none'}">${status}</span>            
         </div>
         <div class="d-flex w-100 mb-3 justify-content-between">
-            <small>Assigned To: ${assignedTo}</small>
-            <small>Due: ${dueDate}</small>
+            <medium>Assigned To: ${assignedTo}</medium>
+            <large>Due: ${dueDate}</large>
         </div>
         <p>${taskDescription}</p>
         <div class="d-flex w-100 justify-content-end">
-            <button class="btn btn-outline-warning btn-sm acknowledge-button ${status === 'TO DO' ? 'd-block' : 'd-none'}">Acknowledge</button>
+            <button class="btn btn-outline-warning acknowledge-button ${status === 'TO DO' ? 'd-block' : 'd-none'}">Acknowledge</button>
             <button class="btn btn-outline-success done-button ${status === 'In Progress' ? 'd-block' : 'd-none'}">Mark As Done</button>
-            <button class="btn btn-outline-secondary btn-sm delete-button ${status === 'DONE' ? 'd-block' : 'd-none'}">Remove from List</button>
+            <button class="btn btn-outline-secondary delete-button ${status === 'DONE' ? 'd-block' : 'd-none'}">Remove from List</button>
         </div>
     </li>
 `;
