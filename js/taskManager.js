@@ -4,6 +4,7 @@ const createTaskHtml = (taskId, taskName, taskDescription, assignedTo, dueDate, 
         <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
             <h5>${taskName}</h5>
             <span class="badge ${status === 'TO DO' ? 'badge-danger' : 'badge-success'}">${status}</span>
+
         </div>
         <div class="d-flex w-100 mb-3 justify-content-between">
             <small>Assigned To: ${assignedTo}</small>
