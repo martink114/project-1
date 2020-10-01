@@ -17,7 +17,7 @@ newTaskForm.addEventListener('submit', (event) => {
     const newTaskDescription = document.querySelector('#newTaskDescription');
 
 
- ////////////////////// VALIDATION STARTS////////////////////
+     ////////////////////// VALIDATION STARTS////////////////////
     if (newTaskNameInput.value.length > 5 && newTaskNameInput.value.length <=80) {
         newTaskNameInput.classList.add('is-valid');
         newTaskNameInput.classList.remove('is-invalid');
@@ -54,27 +54,29 @@ newTaskForm.addEventListener('submit', (event) => {
         newTaskDescription.classList.remove('is-valid');
     }
 
- //////////////////VALIDATION CODES END///////////////////////
+     //////////////////VALIDATION CODES END///////////////////////
 
-    // Get the values of the inputs
+        // Get the values of the inputs
     const taskName = newTaskNameInput.value;
     const taskDescription = newTaskDescription.value;
     const assignedTo = newTaskAssignedTo.value;
     const dueDate = newTaskDueDate.value;
 
-    // Add the task to the task manager
+        // Add the task to the task manager
     taskManager.addTask(taskName, taskDescription, assignedTo, dueDate);
+
     taskManager.save(); 
 
-    // Render the tasks
+        // Render the tasks
     taskManager.render();
 
-    // Clear the form
+        // Clear the form
     newTaskNameInput.value = '';
     newTaskDescription.value = '';
     newTaskAssignedTo.value = '';
     newTaskDueDate.value = '';
-
+    newTaskForm.reset();
+    
 });
 
 
