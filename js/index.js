@@ -121,24 +121,3 @@ tasksList.addEventListener('click', (event) => {
 });
 
 
-
-
-
-
-
-
-
-/*
-
-newTask.addTask('Fix validation code for due date', 'Due date validation code is currently incomplete, refer to Nicks hint on slack \(pod2-code-busters channel\)', 'Diana', '11/09/2020');
-
-newTask.addTask('Add validation feature to \"Task Status\"', 'The element \'task status\' needs a validation feature as per Rubric', 'Irina', '18/09/2020');
-
-newTasks.addTask('fix status button on New Task Form', 'Status button does not work', 'Diana', '30/09/2020');
-
-Ask Generation if they have a similar course for Rocket Science instead and if I could credit transfer from this course to that. 
-
-grass growing quick in warmer weather and the stuff on your head is out of control. 
-Consider weeding too.
-
-*/
