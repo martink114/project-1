@@ -2,16 +2,10 @@
 const createTaskHtml = (taskId, taskName, taskDescription, assignedTo, dueDate, status) => `
 <li class="list-group-item" data-task-id=${taskId}>
         <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
-
-            <h4>${taskName}</h4>
-            <span class="badge ${status === 'TO DO' ? 'badge-danger' : 'badge-success'}">${status}</span>
-
-
             <h4>${taskName}</h4>
             <span class="badge badge-danger ${status === 'TO DO' ? 'd-block' : 'd-none'}">${status}</span>
             <span class="badge badge-warning ${status === 'In Progress' ? 'd-block' : 'd-none'}">${status}</span>
             <span class="badge badge-success ${status === 'DONE' ? 'd-block' : 'd-none'}">${status}</span>            
-
         </div>
         <div class="d-flex w-100 mb-3 justify-content-between">
             <medium>Assigned To: ${assignedTo}</medium>
