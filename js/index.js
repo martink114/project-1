@@ -3,7 +3,7 @@ const taskManager = new TaskManager(0);
 
 taskManager.load(); 
 
-taskManager.render(); 
+taskManager.render(taskManager.tasks); 
 
 // Select the New Task Form
 const newTaskForm = document.querySelector('#newTaskForm');
@@ -68,7 +68,7 @@ newTaskForm.addEventListener('submit', (event) => {
     taskManager.save(); 
 
         // Render the tasks
-    taskManager.render();
+    taskManager.render(taskManager.tasks); 
 
         // Clear the form
     newTaskNameInput.value = '';
@@ -79,13 +79,8 @@ newTaskForm.addEventListener('submit', (event) => {
     
 });
 
-
-
-
 //8.2 Select the Task List and store it in a variable
 const tasksList = document.querySelector('#tasksList');
-
-
 
 //8.3 Add an Event Listener to the Task List, listening for the 'click' event.
 tasksList.addEventListener('click', (event) => {
@@ -97,7 +92,7 @@ tasksList.addEventListener('click', (event) => {
         task.status = 'In Progress';
 
         taskManager.save(); 
-        taskManager.render();
+        taskManager.render(taskManager.tasks); 
     }
 
     if (event.target.classList.contains('done-button')) {
@@ -107,7 +102,7 @@ tasksList.addEventListener('click', (event) => {
         task.status = 'DONE';
 
         taskManager.save(); 
-        taskManager.render();
+        taskManager.render(taskManager.tasks); 
     }
 
     if (event.target.classList.contains('delete-button')) {
@@ -116,8 +111,19 @@ tasksList.addEventListener('click', (event) => {
         taskManager.deleteTask(taskId); 
 
         taskManager.save(); 
-        taskManager.render();
+        taskManager.render(taskManager.tasks); 
     }
 });
 
+//FEATURE: Filters to User. 
+const userTasksDropDown = document.querySelector("#userDropdown");
 
+userTasksDropDown.addEventListener('change', (event) => {
+    
+    if(userTasksDropDown.value === 'all') {
+        taskManager.render(taskManager.tasks);
+    } else {
+    const userTasks = taskManager.getTasksByUser(userTasksDropDown.value);
+    taskManager.render(userTasks);
+    }
+});
