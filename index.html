@@ -33,22 +33,13 @@
           <div class="container" style="width: 100rem">
             <div class="card">
               <div class="card-body">
-                <!-- <span>Select Team Member</span>
-                <br>
-                <br>
-                <a href="#" class="btn btn-primary">TM1</a>
-                <a href="#" class="btn btn-primary">TM2</a>
-                <a href="#" class="btn btn-primary">TM3</a>
-                <a href="#" class="btn btn-primary">TM4</a>
-                <a href="#" class="btn btn-primary">TM5</a>
-                <a href="#" class="btn btn-primary">TM6</a>
-                <a href="#" class="btn btn-primary">TM7</a>
-                <a href="#" class="btn btn-primary">TM8</a>
-                <a href="#" class="btn btn-primary">TM9</a>
-                <a href="#" class="btn btn-primary">Team</a> -->
                 <a href="#newTask" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Assign New Task</a>
-                
-                <!-- <a href="#" class="btn btn-primary">Modify Task</a> -->
+                <select id="userDropdown">
+                  <option value="all">All</option>
+                  <option value="diana">Diana</option>
+                  <option value="irina">Irina</option>
+                  <option value="martin">Martin</option>
+                </select>
               </div>
             </div>
           </div>
@@ -110,17 +101,6 @@
                         <div class="valid-feedback"> Great!</div>
                         <div class="invalid-feedback"> Please provide task specific details to enable your assignee to complete it</div> 
               </div>
-
-              <!-- <div class="form-group">
-                      <label for="newTaskStatus" class="col-form-label">Status</label>
-                      <select class="form-control" id="newTaskStatus">
-                        <option selected="selected">Please choose</option>
-                        <option>To Do</option>
-                        <option>In Progress</option>
-                        <option>Review</option>
-                        <option>Done</option>
-                      </select>      
-              </div>  -->
 
               <div class="form-group">
                       <label>Upload File</label>

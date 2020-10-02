@@ -14,3 +14,6 @@ Verification activities completed:
 16 September 2020
 - Irina has combined the TASK LIST with the NEW TASK FORM so that they are now on the same page (as per Nicks instructions - Task 6, Step 4)
 - DS has changed the name of our combined TASK LIST and NEW TASK FORM to index.html (the original new task form now SUPERCEDED as 'taskform.html' and added to our .gitignore file)
+
+
+//////////////////////////

@@ -8,7 +8,7 @@ const createTaskHtml = (taskId, taskName, taskDescription, assignedTo, dueDate, 
             <span class="badge badge-success ${status === 'DONE' ? 'd-block' : 'd-none'}">${status}</span>            
         </div>
         <div class="d-flex w-100 mb-3 justify-content-between">
-            <medium>Assigned To: ${assignedTo}</medium>
+            <div id="Assignee" medium>Assigned To: ${assignedTo}</div>
             <large>Due: ${dueDate}</large>
         </div>
         <p>${taskDescription}</p>
@@ -69,16 +69,32 @@ class TaskManager {
         return foundTask;
 
     }
+
+//FEATURE - creates task list based on User as selected in drop down. 
+
+    getTasksByUser(assignedTo) {
+        let userTasks = [];
+
+        for (let i = 0; i < this.tasks.length; i++) {
+            const task = this.tasks[i];
+
+            if (task.assignedTo.toLowerCase() === assignedTo.toLowerCase()) {
+                userTasks.push(task);
+            }
+        }
+        return userTasks;
+    }
+
     //7.2: Create render() method
-    render() {
+    render(tasks) {
         //Create a variable storing an empty array to hold the HTML of all the tasks
         const taskHtmlList = [];
 
         //Loop over the TaskManager's tasks, for each task
-        for (let i = 0; i < this.tasks.length; i++) {
+        for (let i = 0; i < tasks.length; i++) {
             
             //Store the current task in a variable
-            const task = this.tasks[i];
+            const task = tasks[i];
 
             //Create a formattedDate variable, storing a readable string representing the date
             const date = new Date(task.dueDate);
@@ -96,8 +112,6 @@ class TaskManager {
         const tasksList = document.querySelector('#tasksList');
         tasksList.innerHTML = tasksHtml;
     }
-
-
 
 //Task 9 - Save and Load from localStorage
 
@@ -121,3 +135,4 @@ class TaskManager {
         }
     }
 }
+
