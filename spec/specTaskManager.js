@@ -119,15 +119,14 @@ describe('TaskManager', () => {
                 taskManager.render();
 
                 expect(tasksList.innerHTML).toContain('<li class="list-group-item" data-task-id=0>');
-                expect(tasksList.innerHTML).toContain('<h5>test</h5>');
+                expect(tasksList.innerHTML).toContain('<h4>test</h4>');
                 expect(tasksList.innerHTML).toContain('<span class="badge badge-danger">TO DO</span>');
-                expect(tasksList.innerHTML).toContain('<small>Assigned To: test</small>');
-                expect(tasksList.innerHTML).toContain('<small>Due: 30/9/2020</small>');
+                expect(tasksList.innerHTML).toContain('<medium>Assigned To: test</medium>');
+                expect(tasksList.innerHTML).toContain('<large>Due: 30/9/2020</large>');
                 expect(tasksList.innerHTML).toContain('<p>test</p>');
-                expect(tasksList.innerHTML).toContain('<button class="btn btn-outline-warning btn-sm acknowledge-button d-block">Acknowledge</button>');
+                expect(tasksList.innerHTML).toContain('<button class="btn btn-outline-warning acknowledge-button d-block">Acknowledge</button>');
                 expect(tasksList.innerHTML).toContain('<button class="btn btn-outline-success done-button d-none">Mark As Done</button>');
-                expect(tasksList.innerHTML).toContain('<button class="btn btn-outline-secondary btn-sm delete-button d-none">Remove from List</button>');
-                
+                expect(tasksList.innerHTML).toContain('<button class="btn btn-outline-secondary delete-button d-none">Remove from List</button>');
             });
         });
     });
