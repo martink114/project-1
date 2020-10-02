@@ -9,12 +9,16 @@ taskManager.render(taskManager.tasks);
 const newTaskForm = document.querySelector('#newTaskForm');
 
 newTaskForm.addEventListener('submit', (event) => {
-    event.preventDefault(); 
+    
 
     const newTaskNameInput = document.querySelector('#newTaskNameInput');
     const newTaskDueDate = document.querySelector('#newTaskDueDate');
     const newTaskAssignedTo = document.querySelector('#newTaskAssignedTo');
     const newTaskDescription = document.querySelector('#newTaskDescription');
+    let statusTaskName= false;
+    let statusDueDate= false;
+    let statusAssign= false;
+    let statusDescription= false;
 
 
      ////////////////////// VALIDATION STARTS////////////////////
@@ -24,6 +28,9 @@ newTaskForm.addEventListener('submit', (event) => {
     } else {
         newTaskNameInput.classList.add('is-invalid');
         newTaskNameInput.classList.remove('is-valid');
+
+        statusTaskName= true;
+        
     }
 
     const today = new Date();localStorage
@@ -32,7 +39,7 @@ newTaskForm.addEventListener('submit', (event) => {
     if (newTaskDueDate.valueAsNumber < today.getTime() || newTaskDueDate.value == 0) {
         newTaskDueDate.classList.remove('is-valid');
         newTaskDueDate.classList.add('is-invalid');
-
+        statusDueDate= true;
     } else {
         newTaskDueDate.classList.add('is-valid');
         newTaskDueDate.classList.remove('is-invalid');
@@ -44,6 +51,7 @@ newTaskForm.addEventListener('submit', (event) => {
     } else {
         newTaskAssignedTo.classList.add('is-invalid');
         newTaskAssignedTo.classList.remove('is-valid');
+        statusAssign= true;
     }
 
     if (newTaskDescription.value.length > 10) {        
@@ -52,11 +60,18 @@ newTaskForm.addEventListener('submit', (event) => {
     } else {
         newTaskDescription.classList.add('is-invalid');
         newTaskDescription.classList.remove('is-valid');
+        statusDescription= true;
+
     }
 
      //////////////////VALIDATION CODES END///////////////////////
 
-        // Get the values of the inputs
+     if (statusTaskName||statusAssign||statusDescription||statusDueDate) { 
+        
+        event.preventDefault();
+        return;
+    } else {
+      // Get the values of the inputs
     const taskName = newTaskNameInput.value;
     const taskDescription = newTaskDescription.value;
     const assignedTo = newTaskAssignedTo.value;
@@ -68,14 +83,14 @@ newTaskForm.addEventListener('submit', (event) => {
     taskManager.save(); 
 
         // Render the tasks
-    taskManager.render(taskManager.tasks); 
-
+    taskManager.render(taskManager.tasks); //
+    }  
         // Clear the form
     newTaskNameInput.value = '';
     newTaskDescription.value = '';
     newTaskAssignedTo.value = '';
     newTaskDueDate.value = '';
-    newTaskForm.reset();
+    
     
 });
 
