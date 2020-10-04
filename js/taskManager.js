@@ -1,27 +1,30 @@
 //7.1: Create new function createTaskHtml
 const createTaskHtml = (taskId, taskName, taskDescription, assignedTo, dueDate, status) => `
 <li class="list-group-item" data-task-id=${taskId}>
-        <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
-            <h4>${taskName}</h4>
+        <div id="renderedFirstLine" class="d-flex w-100 mt-2 justify-content-between align-items-center">
+            <h4 class="w-75">${taskName}</h4>
             <span class="badge badge-danger ${status === 'TO DO' ? 'd-block' : 'd-none'}">${status}</span>
             <span class="badge badge-warning ${status === 'In Progress' ? 'd-block' : 'd-none'}">${status}</span>
-            <span class="badge badge-success ${status === 'DONE' ? 'd-block' : 'd-none'}">${status}</span>            
+            <span class="badge badge-success ${status === 'DONE' ? 'd-block' : 'd-none'}">${status}</span>       
         </div>
-        <div class="d-flex w-100 mb-3 justify-content-between">
-            <div id="Assignee" medium>Assigned To: ${assignedTo}</div>
-            <large>Due: ${dueDate}</large>
+        <br>
+        <div id="renderedSecondLine" class="d-flex w-100 mb-3 justify-content-between">
+            <div>Assigned To: ${assignedTo}</div>
+            <div>Due: ${dueDate}</div>
         </div>
-        <p>${taskDescription}</p>
+        <div id="renderedDescription">
+            <p class="w-75">${taskDescription}</p>
+        </div>
         <div class="d-flex w-100 justify-content-end">
-            <button class="btn btn-outline-warning acknowledge-button ${status === 'TO DO' ? 'd-block' : 'd-none'}">Acknowledge</button>
-            <button class="btn btn-outline-success done-button ${status === 'In Progress' ? 'd-block' : 'd-none'}">Mark As Done</button>
-            <button class="btn btn-outline-secondary delete-button ${status === 'DONE' ? 'd-block' : 'd-none'}">Remove from List</button>
+            <button class="btn btn-sm btn-outline-info review-button ${status === 'DONE' ? 'd-block' : 'd-none'}">Needs Review</button>
+            <button class="btn btn-sm btn-outline-warning acknowledge-button ${status === 'TO DO' ? 'd-block' : 'd-none'}">Acknowledge</button>
+            <button class="btn btn-sm btn-outline-success done-button ${status === 'In Progress' ? 'd-block' : 'd-none'}">Mark As Done</button>
+            <button class="btn btn-sm btn-outline-secondary delete-button ${status === 'DONE' ? 'd-block' : 'd-none'}">Remove from List</button>
         </div>
     </li>
 `;
 
-
- //create taskManager class
+//create taskManager class
 class TaskManager {
     constructor(currentId = 0) {
         this.tasks = [];
@@ -41,7 +44,6 @@ class TaskManager {
     }
     
     //Task 10 Step 2: deleting tasks
-
     deleteTask(taskId) {
         const newTasks = []; 
         for (let i = 0; i < this.tasks.length; i++) {
@@ -57,7 +59,6 @@ class TaskManager {
     //8.4: Add a new method, getTaskById(), it should accept a taskId as a parameter.
     getTaskById(taskId) {
         let foundTask;
-
        // Loop over the this.tasks array, for each task in the loop:
         for (let i = 0; i < this.tasks.length; i++) {
             const task = this.tasks[i];
@@ -67,11 +68,9 @@ class TaskManager {
             }
         }
         return foundTask;
-
     }
 
-//FEATURE - creates task list based on User as selected in drop down. 
-
+    //FEATURE - creates task list based on User as selected in drop down. 
     getTasksByUser(assignedTo) {
         let userTasks = [];
 
@@ -113,8 +112,7 @@ class TaskManager {
         tasksList.innerHTML = tasksHtml;
     }
 
-//Task 9 - Save and Load from localStorage
-
+    //Task 9 - Save and Load from localStorage
     save() {
         const tasksJson = JSON.stringify(this.tasks);
         localStorage.setItem('tasks', tasksJson);
@@ -128,7 +126,6 @@ class TaskManager {
             const tasksJson = localStorage.getItem('tasks'); 
             this.tasks = JSON.parse(tasksJson); 
         }
-
         if (localStorage.getItem('currentId')) {
             const currentId = localStorage.getItem('currentId'); 
             this.currentId = Number(currentId);

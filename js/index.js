@@ -9,8 +9,6 @@ taskManager.render(taskManager.tasks);
 const newTaskForm = document.querySelector('#newTaskForm');
 
 newTaskForm.addEventListener('submit', (event) => {
-    
-
     const newTaskNameInput = document.querySelector('#newTaskNameInput');
     const newTaskDueDate = document.querySelector('#newTaskDueDate');
     const newTaskAssignedTo = document.querySelector('#newTaskAssignedTo');
@@ -19,18 +17,14 @@ newTaskForm.addEventListener('submit', (event) => {
     let statusDueDate= false;
     let statusAssign= false;
     let statusDescription= false;
-
-
-     ////////////////////// VALIDATION STARTS////////////////////
+    ////////////////////// VALIDATION STARTS////////////////////
     if (newTaskNameInput.value.length > 5 && newTaskNameInput.value.length <=80) {
         newTaskNameInput.classList.add('is-valid');
         newTaskNameInput.classList.remove('is-invalid');
     } else {
         newTaskNameInput.classList.add('is-invalid');
         newTaskNameInput.classList.remove('is-valid');
-
         statusTaskName= true;
-        
     }
 
     const today = new Date();localStorage
@@ -61,37 +55,32 @@ newTaskForm.addEventListener('submit', (event) => {
         newTaskDescription.classList.add('is-invalid');
         newTaskDescription.classList.remove('is-valid');
         statusDescription= true;
-
     }
 
-     //////////////////VALIDATION CODES END///////////////////////
-
      if (statusTaskName||statusAssign||statusDescription||statusDueDate) { 
-        
         event.preventDefault();
         return;
+    //////////////////VALIDATION CODES END///////////////////////
     } else {
-      // Get the values of the inputs
+    // Get the values of the inputs
     const taskName = newTaskNameInput.value;
     const taskDescription = newTaskDescription.value;
     const assignedTo = newTaskAssignedTo.value;
     const dueDate = newTaskDueDate.value;
 
-        // Add the task to the task manager
+    // Add the task to the task manager
     taskManager.addTask(taskName, taskDescription, assignedTo, dueDate);
 
     taskManager.save(); 
 
-        // Render the tasks
-    taskManager.render(taskManager.tasks); //
+    // Render the tasks
+    taskManager.render(taskManager.tasks); 
     }  
-        // Clear the form
+    // Clear the form
     newTaskNameInput.value = '';
     newTaskDescription.value = '';
     newTaskAssignedTo.value = '';
     newTaskDueDate.value = '';
-    
-    
 });
 
 //8.2 Select the Task List and store it in a variable
@@ -106,8 +95,18 @@ tasksList.addEventListener('click', (event) => {
         const task = taskManager.getTaskById(taskId);
         task.status = 'In Progress';
 
-        taskManager.save(); 
-        taskManager.render(taskManager.tasks); 
+       taskManager.save(); 
+      taskManager.render(taskManager.tasks); 
+    }
+
+    if (event.target.classList.contains('review-button')) {
+        const parentTask = event.target.parentElement.parentElement;
+        const taskId = Number(parentTask.dataset.taskId);
+        const task = taskManager.getTaskById(taskId);
+        task.status = 'In Progress';
+
+       taskManager.save(); 
+      taskManager.render(taskManager.tasks); 
     }
 
     if (event.target.classList.contains('done-button')) {
