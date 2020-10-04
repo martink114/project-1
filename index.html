@@ -78,15 +78,13 @@
                 <textarea class="form-control" id="newTaskDescription" placeholder="Include any specific instructions or task requirements here"></textarea>
                   <div class="valid-feedback"> Great!</div>
                   <div class="invalid-feedback"> Please provide task specific details to enable your assignee to complete it</div> 
-            </div>
-             <!-- <div class="form-group">
-                <label>Upload File</label>
-                <br>
-                <input type="file">
-                <p class="help-block">Only png and jpg allowed</p>
-              </div>   -->
+              </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input close" id="closeModalAfterSubmit">
+                  <label class="custom-control-label" for="closeModalAfterSubmit">Close Form after Submitting New Task</label>
+                </div>
+                <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </form>
