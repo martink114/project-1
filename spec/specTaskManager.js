@@ -100,7 +100,7 @@ describe('TaskManager', () => {
     });
     describe ('#render', () => {
         describe('when tasks exist in the task manager', () => {
-            it('should render the test in the innerHTML of the tasksList', () => {
+            it('should render the test in the innerHTML of the tasksList according to Assignee', () => {
                 const taskManager = new TaskManager();
 
                 const task ={

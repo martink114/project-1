@@ -130,6 +130,21 @@ tasksList.addEventListener('click', (event) => {
     }
 });
 
+
+// const buttonElement = document.getElementById('btn');
+// buttonElement.addEventListener('click', (event) => {
+
+//     if (event.target.classList.contains('delete-button')) {
+//         const parentTask = event.target.parentElement.parentElement;
+//         const taskId = Number(parentTask.dataset.taskId);
+//         const task = taskManager.getTaskById(taskId);
+//         task.status = 'In Progress';
+
+//         taskManager.save(); 
+//         taskManager.render(taskManager.tasks); 
+//     }
+// });
+
 //FEATURE: Filters to User. 
 const userTasksDropDown = document.querySelector("#userDropdown");
 
@@ -142,3 +157,10 @@ userTasksDropDown.addEventListener('change', (event) => {
     taskManager.render(userTasks);
     }
 });
+
+/* GO BACK BUTTON
+
+document.getElementById('go-back').addEventListener('click', () => {
+    history.back();
+});
+*/

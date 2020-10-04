@@ -8,14 +8,16 @@ const createTaskHtml = (taskId, taskName, taskDescription, assignedTo, dueDate, 
             <span class="badge badge-success ${status === 'DONE' ? 'd-block' : 'd-none'}">${status}</span>            
         </div>
         <div class="d-flex w-100 mb-3 justify-content-between">
-            <div id="Assignee" medium>Assigned To: ${assignedTo}</div>
+            <div id="Assignee" medium>Assigned To:  <strong>${assignedTo}</strong></div>
             <large>Due: ${dueDate}</large>
         </div>
         <p>${taskDescription}</p>
         <div class="d-flex w-100 justify-content-end">
+        
             <button class="btn btn-outline-warning acknowledge-button ${status === 'TO DO' ? 'd-block' : 'd-none'}">Acknowledge</button>
             <button class="btn btn-outline-success done-button ${status === 'In Progress' ? 'd-block' : 'd-none'}">Mark As Done</button>
             <button class="btn btn-outline-secondary delete-button ${status === 'DONE' ? 'd-block' : 'd-none'}">Remove from List</button>
+            
         </div>
     </li>
 `;

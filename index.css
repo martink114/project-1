@@ -6,3 +6,13 @@ html {
 .pagesetup {
     background-color: var(--first-color);
 }
+h1 {
+    font-size: 4rem;
+}
+#userDropdown {
+    border-color: #053cf1;
+    border-width: 0.1em;
+}
+button {
+margin-left: 0.3em;
+}
