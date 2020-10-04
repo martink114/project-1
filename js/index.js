@@ -97,8 +97,13 @@ tasksList.addEventListener('click', (event) => {
         task.status = 'In Progress';
 
         taskManager.save();  
-        const userTasks = taskManager.getTasksByUser(userTasksDropDown.value);
-        taskManager.render(userTasks);
+       
+        if(userTasksDropDown.value === 'all') {
+            taskManager.render(taskManager.tasks);
+        } else {
+            const userTasks = taskManager.getTasksByUser(userTasksDropDown.value);
+            taskManager.render(userTasks);
+        }
     }
 
     if (event.target.classList.contains('review-button')) {
@@ -107,9 +112,14 @@ tasksList.addEventListener('click', (event) => {
         const task = taskManager.getTaskById(taskId);
         task.status = 'In Progress';
 
-        taskManager.save(); 
-        const userTasks = taskManager.getTasksByUser(userTasksDropDown.value);
-        taskManager.render(userTasks);
+        taskManager.save();  
+        
+        if(userTasksDropDown.value === 'all') {
+            taskManager.render(taskManager.tasks);
+        } else {
+            const userTasks = taskManager.getTasksByUser(userTasksDropDown.value);
+            taskManager.render(userTasks);
+        }
     }
 
     if (event.target.classList.contains('done-button')) {
@@ -118,19 +128,29 @@ tasksList.addEventListener('click', (event) => {
         const task = taskManager.getTaskById(taskId);
         task.status = 'DONE';
 
-        taskManager.save(); 
-        const userTasks = taskManager.getTasksByUser(userTasksDropDown.value);
-        taskManager.render(userTasks);
+        taskManager.save();  
+       
+        if(userTasksDropDown.value === 'all') {
+            taskManager.render(taskManager.tasks);
+        } else {
+            const userTasks = taskManager.getTasksByUser(userTasksDropDown.value);
+            taskManager.render(userTasks);
+        }
     }
 
     if (event.target.classList.contains('delete-button')) {
         const parentTask = event.target.parentElement.parentElement;
         const taskId = Number(parentTask.dataset.taskId); 
         taskManager.deleteTask(taskId); 
-
-        taskManager.save(); 
-        const userTasks = taskManager.getTasksByUser(userTasksDropDown.value);
-        taskManager.render(userTasks);
+        
+        taskManager.save();  
+        
+        if(userTasksDropDown.value === 'all') {
+            taskManager.render(taskManager.tasks);
+        } else {
+            const userTasks = taskManager.getTasksByUser(userTasksDropDown.value);
+            taskManager.render(userTasks);
+        }
     }
 });
 
