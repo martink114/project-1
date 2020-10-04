@@ -6,3 +6,22 @@ html {
 .pagesetup {
     background-color: var(--first-color);
 }
+
+body {
+    font-family: 'Bebas Neue', cursive;
+}
+
+#renderedFirstLine {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.5rem;
+}
+
+#renderedSecondLine {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.2rem;
+}
+
+#renderedDescription {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}

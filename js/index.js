@@ -9,28 +9,23 @@ taskManager.render(taskManager.tasks);
 const newTaskForm = document.querySelector('#newTaskForm');
 
 newTaskForm.addEventListener('submit', (event) => {
-    
-
     const newTaskNameInput = document.querySelector('#newTaskNameInput');
     const newTaskDueDate = document.querySelector('#newTaskDueDate');
     const newTaskAssignedTo = document.querySelector('#newTaskAssignedTo');
     const newTaskDescription = document.querySelector('#newTaskDescription');
-    let statusTaskName= false;
-    let statusDueDate= false;
-    let statusAssign= false;
-    let statusDescription= false;
+    let statusTaskName = false;
+    let statusDueDate = false;
+    let statusAssign = false;
+    let statusDescription = false;
 
-
-     ////////////////////// VALIDATION STARTS////////////////////
+    ////////////////////// VALIDATION STARTS////////////////////
     if (newTaskNameInput.value.length > 5 && newTaskNameInput.value.length <=80) {
         newTaskNameInput.classList.add('is-valid');
         newTaskNameInput.classList.remove('is-invalid');
     } else {
         newTaskNameInput.classList.add('is-invalid');
         newTaskNameInput.classList.remove('is-valid');
-
-        statusTaskName= true;
-        
+        statusTaskName = true;
     }
 
     const today = new Date();localStorage
@@ -39,7 +34,7 @@ newTaskForm.addEventListener('submit', (event) => {
     if (newTaskDueDate.valueAsNumber < today.getTime() || newTaskDueDate.value == 0) {
         newTaskDueDate.classList.remove('is-valid');
         newTaskDueDate.classList.add('is-invalid');
-        statusDueDate= true;
+        statusDueDate = true;
     } else {
         newTaskDueDate.classList.add('is-valid');
         newTaskDueDate.classList.remove('is-invalid');
@@ -51,7 +46,7 @@ newTaskForm.addEventListener('submit', (event) => {
     } else {
         newTaskAssignedTo.classList.add('is-invalid');
         newTaskAssignedTo.classList.remove('is-valid');
-        statusAssign= true;
+        statusAssign = true;
     }
 
     if (newTaskDescription.value.length > 10) {        
@@ -60,38 +55,33 @@ newTaskForm.addEventListener('submit', (event) => {
     } else {
         newTaskDescription.classList.add('is-invalid');
         newTaskDescription.classList.remove('is-valid');
-        statusDescription= true;
-
+        statusDescription = true;
     }
 
-     //////////////////VALIDATION CODES END///////////////////////
-
      if (statusTaskName||statusAssign||statusDescription||statusDueDate) { 
-        
         event.preventDefault();
         return;
+    //////////////////VALIDATION CODES END///////////////////////
     } else {
-      // Get the values of the inputs
+    // Get the values of the inputs
     const taskName = newTaskNameInput.value;
     const taskDescription = newTaskDescription.value;
     const assignedTo = newTaskAssignedTo.value;
     const dueDate = newTaskDueDate.value;
 
-        // Add the task to the task manager
+    // Add the task to the task manager
     taskManager.addTask(taskName, taskDescription, assignedTo, dueDate);
 
     taskManager.save(); 
 
-        // Render the tasks
-    taskManager.render(taskManager.tasks); //
+    // Render the tasks
+    taskManager.render(taskManager.tasks); 
     }  
-        // Clear the form
+    // Clear the form
     newTaskNameInput.value = '';
     newTaskDescription.value = '';
     newTaskAssignedTo.value = '';
     newTaskDueDate.value = '';
-    
-    
 });
 
 //8.2 Select the Task List and store it in a variable
@@ -106,8 +96,20 @@ tasksList.addEventListener('click', (event) => {
         const task = taskManager.getTaskById(taskId);
         task.status = 'In Progress';
 
+        taskManager.save();  
+        const userTasks = taskManager.getTasksByUser(userTasksDropDown.value);
+        taskManager.render(userTasks);
+    }
+
+    if (event.target.classList.contains('review-button')) {
+        const parentTask = event.target.parentElement.parentElement;
+        const taskId = Number(parentTask.dataset.taskId);
+        const task = taskManager.getTaskById(taskId);
+        task.status = 'In Progress';
+
         taskManager.save(); 
-        taskManager.render(taskManager.tasks); 
+        const userTasks = taskManager.getTasksByUser(userTasksDropDown.value);
+        taskManager.render(userTasks);
     }
 
     if (event.target.classList.contains('done-button')) {
@@ -117,7 +119,8 @@ tasksList.addEventListener('click', (event) => {
         task.status = 'DONE';
 
         taskManager.save(); 
-        taskManager.render(taskManager.tasks); 
+        const userTasks = taskManager.getTasksByUser(userTasksDropDown.value);
+        taskManager.render(userTasks);
     }
 
     if (event.target.classList.contains('delete-button')) {
@@ -126,7 +129,8 @@ tasksList.addEventListener('click', (event) => {
         taskManager.deleteTask(taskId); 
 
         taskManager.save(); 
-        taskManager.render(taskManager.tasks); 
+        const userTasks = taskManager.getTasksByUser(userTasksDropDown.value);
+        taskManager.render(userTasks);
     }
 });
 
@@ -138,7 +142,7 @@ userTasksDropDown.addEventListener('change', (event) => {
     if(userTasksDropDown.value === 'all') {
         taskManager.render(taskManager.tasks);
     } else {
-    const userTasks = taskManager.getTasksByUser(userTasksDropDown.value);
-    taskManager.render(userTasks);
+        const userTasks = taskManager.getTasksByUser(userTasksDropDown.value);
+        taskManager.render(userTasks);
     }
 });
