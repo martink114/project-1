@@ -1,3 +1,4 @@
+
 html {
     --first-color: rgb(190, 235, 229);
     background-color: var(--first-color);
@@ -34,4 +35,5 @@ footer {
 }
 #tasksList {
     border-color: purple;
+
 }
