@@ -10,7 +10,10 @@ html {
 
 body {
     font-family: 'Bebas Neue', cursive;
-   
+}
+
+#taskManagerFunctions {
+    font-size: 1.2rem;
 }
 
 #renderedFirstLine {
