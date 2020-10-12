@@ -103,7 +103,7 @@ describe('TaskManager', () => {
             it('should render the test in the innerHTML of the tasksList', () => {
                 const taskManager = new TaskManager();
 
-                const task ={
+                const task = {
                     taskId: taskManager.currentId,
                     taskName: 'test',
                     taskDescription: 'test',
@@ -136,7 +136,7 @@ describe('TaskManager', () => {
             it('should store the tasks in the local storage', () => {
                 const taskManager = new TaskManager();
 
-                const task ={
+                const task = {
                     taskId: taskManager.currentId,
                     taskName: 'test',
                     taskDescription: 'test',
@@ -176,6 +176,9 @@ describe('TaskManager', () => {
                 };
                 const tasks = [task];
                 const tasksJson = JSON.stringify(tasks);
+                spyOn(localStorage, 'getItem').and.returnValue(tasksJson);
+                taskManager.load();
+                expect(taskManager.tasks).toEqual(tasks); 
             });
         });
         describe('when the currentId is saved in localStorage', () => {
