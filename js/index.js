@@ -9,6 +9,7 @@ taskManager.render(taskManager.tasks);
 const newTaskForm = document.querySelector('#newTaskForm');
 
 newTaskForm.addEventListener('submit', (event) => {
+    event.preventDefault();
     const newTaskNameInput = document.querySelector('#newTaskNameInput');
     const newTaskDueDate = document.querySelector('#newTaskDueDate');
     const newTaskAssignedTo = document.querySelector('#newTaskAssignedTo');
@@ -59,7 +60,6 @@ newTaskForm.addEventListener('submit', (event) => {
     }
 
      if (statusTaskName||statusAssign||statusDescription||statusDueDate) { 
-        event.preventDefault();
         return;
     //////////////////VALIDATION CODES END///////////////////////
     } else {
@@ -77,6 +77,12 @@ newTaskForm.addEventListener('submit', (event) => {
     // Render the tasks
     taskManager.render(taskManager.tasks); 
     }  
+
+    newTaskNameInput.classList.remove('is-valid');
+    newTaskDueDate.classList.remove('is-valid');
+    newTaskAssignedTo.classList.remove('is-valid');
+    newTaskDescription.classList.remove('is-valid');
+
     // Clear the form
     newTaskNameInput.value = '';
     newTaskDescription.value = '';
@@ -166,3 +172,16 @@ userTasksDropDown.addEventListener('change', (event) => {
         taskManager.render(userTasks);
     }
 });
+
+
+//add mouse over event on closeModalButton in newTaskForm
+const closeModalButton = document.querySelector("#closeModalButton");
+const closeModalButtonHtml = closeModalButton.innerHTML;
+
+closeModalButton.addEventListener('mouseover', () => {
+    closeModalButton.innerHTML = "CLOSE";
+    });
+    closeModalButton.addEventListener('mouseleave', () => {
+        closeModalButton.innerHTML = closeModalButtonHtml;
+    });
+
