@@ -21,12 +21,12 @@
       <div class="container" id="jumbotron">
         <h1>Screw It, Let's Do It!</h1>
         <h3>Task List</h3>
-    </div>
-    <br>
+      </div>
+      <br>
         <div class="form-group row">
-          <div class="container" style="width:100rem">
+          <div class="container-fluid">
             <div class="card">
-              <div class="card-body">
+              <div class="card-body" id="taskManagerFunctions">
                 <span>Filter Tasks to User:</span>
                   <select id="userDropdown">
                     <option value="all">All</option>
@@ -35,16 +35,15 @@
                     <option value="martin">Martin</option>
                     <option value="spare">(spare)</option>
                   </select>
-                <a href="#newTask" class="btn btn-primary float-right"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Assign New Task</a>
+                <a href="#newTask" class="btn btn-primary float-right"  data-toggle="modal" data-target="#newTaskModal" data-whatever="@mdo" data-backdrop="focus">Assign New Task</a>
               </div>
             </div>
           </div>
 
           <!--CARDS vs LIST -->
-          <div class="container">
-            <!-- <div class="card"> -->
-              <div class="card-body">
-                <div class="row row-cols-3" id="tasksList"></div> 
+          <div class="container-fluid">
+            <div class="card mx-auto">
+              <div class="card-body" id="tasksList"> 
                 <!-- <div class="list-group" id="tasksList"></div> -->
               </div>
             </div>
@@ -53,12 +52,12 @@
     </div>
 
     <!--NEW TASK FORM-->    
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+    <div class="modal fade" id="newTaskModal" tabindex="-1" role="dialog" aria-labelledby="newTask" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="newTask">Create New Task</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close" id="closeModalButton" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
           </div>
@@ -83,7 +82,8 @@
                 <div class="valid-feedback">OK!</div>
                 <div class="invalid-feedback">Who would you like to assign this to?</div>
               </div>
-              <!--<div class="form-group">
+              <!--ASSIGNED TO - TEXT FIELD OPTION
+              <div class="form-group">
                 <label for="newTaskAssignedTo" class="col-form-label">Assigned To:</label>
                 <input type="text" class="form-control" id="newTaskAssignedTo" placeholder="Nominate Team Member">
                   <div class="valid-feedback">OK!</div>
@@ -98,15 +98,17 @@
               <div class="form-group">
                 <label for="newTaskDescription" class="col-form-label">Description</label>                
                 <textarea class="form-control" id="newTaskDescription" placeholder="Include any specific instructions or task requirements here"></textarea>
-                  <div class="valid-feedback"> Great!</div>
-                  <div class="invalid-feedback"> Please provide task specific details to enable your assignee to complete it</div> 
+                  <div class="valid-feedback">Great!</div>
+                  <div class="invalid-feedback">Please provide task specific details to enable your assignee to complete it</div> 
               </div>
               <div class="modal-footer">
+                <!--CLOSE MODAL - CHECKBOX OPTION
                 <div class="custom-control custom-checkbox">
                   <input type="checkbox" class="custom-control-input close" id="closeModalAfterSubmit">
-                  <label class="custom-control-label" for="closeModalAfterSubmit">Close Form after Submitting New Task</label>
-                </div>
-                <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                  <label class="custom-control-label" for="closeModalAfterSubmit">Close Form on Submit</label>
+                </div>-->
+                <!--Optional CLOSE MODAL button
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </form>
@@ -115,16 +117,16 @@
       </div>
     </div>
   <footer>
-      <div class="container">
-        <div class="website-footer">
-            <div class="reference">
-                <h6 id="footer-text1">Created by</h6> 
-                <a href="https://github.com/martink114">Martin K</a>, <a href="https://github.com/d1anas0">Diana So</a> & <a href="https://github.com/vasiliygenadiy">Irina Ko </a></h6>
-                <h6>2020</h6>
-            </div>
+    <div class="container">
+      <div class="website-footer">
+        <div class="reference">
+          <h6 id="footer-text1">Created by</h6> 
+          <a href="https://github.com/martink114">Martin K</a>, <a href="https://github.com/d1anas0">Diana So</a> & <a href="https://github.com/vasiliygenadiy">Irina Ko </a></h6>
+          <h6>2020</h6>
         </div>
-      </div>  
-    </footer>
+      </div>
+    </div>  
+  </footer>
 
     <!-- Optional JavaScript -->
     <script src="js/taskManager.js"></script>
