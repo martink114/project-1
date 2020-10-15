@@ -115,18 +115,19 @@ describe('TaskManager', () => {
                 const tasksList = {innerHTML: '' };
 
                 spyOn(document, 'querySelector').and.returnValue(tasksList);
-                 
-                taskManager.render();
+                
+                const tasks = [task];
+                taskManager.render(tasks);
 
                 expect(tasksList.innerHTML).toContain('<li class="list-group-item" data-task-id=0>');
-                expect(tasksList.innerHTML).toContain('<h4>test</h4>');
+                expect(tasksList.innerHTML).toContain('<h4 class="w-75">test</h4>');
                 expect(tasksList.innerHTML).toContain('<span class="badge badge-danger d-block">TO DO</span>');
-                expect(tasksList.innerHTML).toContain('<medium>Assigned To: test</medium>');
+                expect(tasksList.innerHTML).toContain('<div>Assigned To: test</div>');
                 expect(tasksList.innerHTML).toContain('<large>Due: 30/9/2020</large>');
-                expect(tasksList.innerHTML).toContain('<p>test</p>');
-                expect(tasksList.innerHTML).toContain('<button class="btn btn-outline-warning acknowledge-button d-block">Acknowledge</button>');
-                expect(tasksList.innerHTML).toContain('<button class="btn btn-outline-success done-button d-none">Mark As Done</button>');
-                expect(tasksList.innerHTML).toContain('<button class="btn btn-outline-secondary delete-button d-none">Remove from List</button>');
+                expect(tasksList.innerHTML).toContain('<p class="w-75">test</p>');
+                expect(tasksList.innerHTML).toContain('<button class="btn btn-sm btn-outline-warning acknowledge-button d-block">Acknowledge</button>');
+                expect(tasksList.innerHTML).toContain('<button class="btn btn-sm btn-outline-success done-button d-none">Mark As Done</button>');
+                expect(tasksList.innerHTML).toContain('<button class="btn btn-sm btn-outline-secondary delete-button d-none">Remove from List</button>');
             });
         });
     });

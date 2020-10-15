@@ -10,7 +10,7 @@ const createTaskHtml = (taskId, taskName, taskDescription, assignedTo, dueDate, 
         <br>
         <div id="renderedSecondLine" class="d-flex w-100 mb-3 justify-content-between">
             <div>Assigned To: ${assignedTo}</div>
-            <div>Due: ${dueDate}</div>
+            <large>Due: ${dueDate}</large>
         </div>
         <div id="renderedDescription">
             <p class="w-75">${taskDescription}</p>
