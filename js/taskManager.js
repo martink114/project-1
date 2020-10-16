@@ -15,7 +15,7 @@ const createTaskHtml = (taskId, taskName, taskDescription, assignedTo, dueDate, 
         <div id="renderedDescription">
             <p class="w-75">${taskDescription}</p>
         </div>
-        <div class="card-footer bg-transparent d-flex w-100 justify-content-end">
+        <div class="d-flex w-100 justify-content-end">
             <button class="btn btn-sm btn-outline-info review-button ${status === 'DONE' ? 'd-block' : 'd-none'}">Needs Review</button>
             <button class="btn btn-sm btn-outline-warning acknowledge-button ${status === 'TO DO' ? 'd-block' : 'd-none'}">Acknowledge</button>
             <button class="btn btn-sm btn-outline-success done-button ${status === 'In Progress' ? 'd-block' : 'd-none'}">Mark As Done</button>
